@@ -18,6 +18,7 @@ const ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
 console.log("Hello World");
 
 // Normal For Loop
+console.log("For Loop: ");
 for (let i = 0; i < companies.length; i++) {
   console.log(companies[i]);
 }
@@ -27,13 +28,11 @@ for (let i = 0; i < companies.length; i++) {
 // - Does not have a return value
 // - Is good to manipulate the original array -  e.g. creating new value
 
-console.log(companies);
-
 companies.forEach(item => {
   item.end = item.end + 1;
 });
 
-console.log(companies);
+console.log("Manipulated companies end date: ", companies);
 
 // Filter
 // - Filters items out of the array
@@ -73,7 +72,7 @@ const autoComps = companies.filter(company => company.category === "Auto");
 console.log(autoComps);
 
 // Map
-// - The map() method is similar to the forEach() method, but it returns a new array
+// - The map() method is similar to the forEach() method, but it Return a new array
 // - Lets us go through each item in an array
 // - But we need to have a return statement, that returns the elements of the new array
 
@@ -88,4 +87,31 @@ console.log(companyAges);
 // - Returns the reference to the same array, now sorted (as strings)
 // - (Reference to the original array means that > mutating the returned array will mutate the original array as well)
 
-console.log("Companies before: ", companies);
+// Sort - Subtraction
+const companiesSortedSubtraction = companies.sort((comp1, comp2) => {
+  return comp1.end - comp2.end;
+});
+
+console.log(
+  "New referencing array (Subtraction): ",
+  companiesSortedSubtraction
+);
+
+console.log("Companies after: ", companies);
+
+// Sort - More than operator
+const companiesSortedMoreThanOperator = companies.sort((comp1, comp2) => {
+  if (comp1.start > comp2.start) {
+    return 1;
+  } else {
+    return -1;
+  }
+});
+
+console.log("New referencing array (Operator): ", companiesSortedSubtraction);
+
+// Sort - More than operator Ternary
+
+const companiesSortedTernary = companies.sort((comp1, comp2) => {
+  comp1.end > comp2.end ? 1 : -1;
+});
